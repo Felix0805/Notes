@@ -15,6 +15,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="WWq-v1-mH5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="zbn-WS-qvF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -27,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="140" y="138.98050974512745"/>
         </scene>
-        <!--Item-->
+        <!--Reminders-->
         <scene sceneID="pIw-Os-a0q">
             <objects>
                 <navigationController id="dbd-OE-VW2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="KbG-8U-K8o"/>
+                    <tabBarItem key="tabBarItem" title="Reminders" image="reminders" selectedImage="reminders" id="KbG-8U-K8o"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YYA-IP-8oS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -63,11 +64,11 @@
             </objects>
             <point key="canvasLocation" x="1853" y="486"/>
         </scene>
-        <!--Item-->
+        <!--Notes-->
         <scene sceneID="rYb-gV-Y69">
             <objects>
                 <navigationController id="Y0x-A9-G4A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6km-oc-tTv"/>
+                    <tabBarItem key="tabBarItem" title="Notes" image="take-notes" selectedImage="take-notes" id="6km-oc-tTv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zot-Qi-HYG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -128,7 +129,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="1yT-Ov-ang">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="sjg-sz-sol"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sjg-sz-sol"/>
                     </navigationItem>
                     <connections>
                         <outlet property="notesMainTableView" destination="VRl-3g-a89" id="zbb-Im-oL7"/>
@@ -158,4 +159,8 @@
             <point key="canvasLocation" x="2606" y="-333"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reminders" width="16" height="16"/>
+        <image name="take-notes" width="16" height="16"/>
+    </resources>
 </document>
