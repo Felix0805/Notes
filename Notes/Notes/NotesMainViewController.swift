@@ -8,13 +8,19 @@
 
 import UIKit
 
-class NotesMainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+var notesList: [NotesModel] = []
 
-    test1
+class NotesMainViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var notesMainTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        notesList = [NotesModel(title: "ANotes", content: "AContent"),
+                     NotesModel(title: "BNotes", content: "BContend")]
+        notesMainTableView.delegate = self
+        notesMainTableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -24,6 +30,21 @@ class NotesMainViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return notesList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.notesMainTableView.dequeueReusableCell(withIdentifier: "NotesCell")! as UITableViewCell
+//        let cell = UITableViewCell()
+        let title = cell.viewWithTag(101) as! UILabel
+        var temp: NotesModel
+        temp = notesList[indexPath.row]
+        title.text = temp.title
+//        cell.textLabel?.text = temp.title
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 
