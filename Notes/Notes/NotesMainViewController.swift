@@ -21,6 +21,15 @@ class NotesMainViewController: UIViewController,  UITableViewDelegate, UITableVi
                      NotesModel(title: "BNotes", content: "BContend")]
         notesMainTableView.delegate = self
         notesMainTableView.dataSource = self
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        
+//        // hide the search bar
+//        var contentOffset = notesMainTableView.contentOffset
+//        contentOffset.y += searchDisplayController!.searchBar.frame.size.height
+//        notesMainTableView.contentOffset = contentOffset
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -43,6 +52,20 @@ class NotesMainViewController: UIViewController,  UITableViewDelegate, UITableVi
         title.text = temp.title
 //        cell.textLabel?.text = temp.title
         return cell
+    }
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let detail = segue.destination as! NotesDetailViewController
+            let indexPath = notesMainTableView.indexPathForSelectedRow
+            if let index = indexPath {
+                detail.label = notesList[index.row].title
+            }
+//            let note = sender as! NotesModel
+//            detail.label = note.title
+        }
     }
     
     /*
