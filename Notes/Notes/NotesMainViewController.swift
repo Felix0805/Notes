@@ -8,9 +8,8 @@
 
 import UIKit
 
-class NotesMainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    ...
+class NotesMainViewController: UIViewController, UITableViewDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
