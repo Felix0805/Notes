@@ -13,6 +13,9 @@
 		FEAA3A441E278337002FB1A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA3A421E278337002FB1A4 /* LaunchScreen.storyboard */; };
 		FEAA3A4D1E278392002FB1A4 /* RemindersMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */; };
 		FEAA3A4E1E278392002FB1A4 /* RemindersMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEAA3A4C1E278392002FB1A4 /* RemindersMainViewController.xib */; };
+		FEAA3A501E27850E002FB1A4 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A4F1E27850E002FB1A4 /* func.swift */; };
+		FEAA3A521E27856E002FB1A4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A511E27856E002FB1A4 /* Model.swift */; };
+		FEAA3A541E2786C5002FB1A4 /* NotesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A531E2786C5002FB1A4 /* NotesMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		FEAA3A451E278337002FB1A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersMainViewController.swift; sourceTree = "<group>"; };
 		FEAA3A4C1E278392002FB1A4 /* RemindersMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemindersMainViewController.xib; sourceTree = "<group>"; };
+		FEAA3A4F1E27850E002FB1A4 /* func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = func.swift; sourceTree = "<group>"; };
+		FEAA3A511E27856E002FB1A4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		FEAA3A531E2786C5002FB1A4 /* NotesMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +64,13 @@
 			children = (
 				FEAA3A391E278337002FB1A4 /* AppDelegate.swift */,
 				FEAA3A3D1E278337002FB1A4 /* Main.storyboard */,
+				FEAA3A531E2786C5002FB1A4 /* NotesMainViewController.swift */,
 				FEAA3A401E278337002FB1A4 /* Assets.xcassets */,
 				FEAA3A421E278337002FB1A4 /* LaunchScreen.storyboard */,
 				FEAA3A451E278337002FB1A4 /* Info.plist */,
 				FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */,
+				FEAA3A4F1E27850E002FB1A4 /* func.swift */,
+				FEAA3A511E27856E002FB1A4 /* Model.swift */,
 				FEAA3A4C1E278392002FB1A4 /* RemindersMainViewController.xib */,
 			);
 			path = Notes;
@@ -140,8 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEAA3A541E2786C5002FB1A4 /* NotesMainViewController.swift in Sources */,
 				FEAA3A3A1E278337002FB1A4 /* AppDelegate.swift in Sources */,
+				FEAA3A521E27856E002FB1A4 /* Model.swift in Sources */,
 				FEAA3A4D1E278392002FB1A4 /* RemindersMainViewController.swift in Sources */,
+				FEAA3A501E27850E002FB1A4 /* func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
