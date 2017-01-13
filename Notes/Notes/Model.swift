@@ -23,9 +23,21 @@ class RemindersModel : NSObject{
 class NotesModel : NSObject {
     var title: String
     var content: String
+    var fname: String
     
-    init(title: String, content: String) {
+    init(title: String, content: String, fname: String) {
         self.title = title
         self.content = content
+        self.fname = fname
+    }
+}
+
+class FoldersModel : NSObject {
+    var name: String
+    var notes: [NotesModel]
+    
+    init(name: String, notes: [NotesModel]) {
+        self.name = name
+        self.notes = notes
     }
 }
