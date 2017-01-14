@@ -12,11 +12,13 @@ class RemindersModel : NSObject{
     var title: String
     var content:String
     var date: Date
+    var level: Int
     
-    init (title: String, content: String, date: Date) {
+    init (title: String, content: String, date: Date, level: Int) {
         self.title = title
-        self.content = title
+        self.content = content
         self.date = date
+        self.level = level
     }
 }
 
