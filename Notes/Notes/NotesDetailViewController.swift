@@ -28,6 +28,8 @@ class NotesDetailViewController: UIViewController {
         
         titleTextField.text = titleString
         contentTextView.text = contentString
+        self.automaticallyAdjustsScrollViewInsets = false
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +50,7 @@ class NotesDetailViewController: UIViewController {
             }
 
     }
-    
+
 
     
     
