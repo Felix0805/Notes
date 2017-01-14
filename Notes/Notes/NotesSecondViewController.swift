@@ -7,13 +7,14 @@
 //
 
 import UIKit
-var notesList: [NotesModel] = [NotesModel(title: "ANotes", content: "AContent", fname: "AFolder"),
-                               NotesModel(title: "BNotes", content: "BContend", fname: "BFolder")]
+var notesList: [NotesModel] = [NotesModel(title: "ANotes", content: "AContent"),
+                               NotesModel(title: "BNotes", content: "BContend")]
 var showList: [NotesModel] = []
 
 class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var folderName = "init";
+    var folderIndex = 0;
     
     @IBOutlet weak var notesTableView: UITableView!
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         notesTableView.delegate = self
         notesTableView.dataSource = self
         
+        navigationItem.rightBarButtonItem = editButtonItem
 //        showList.removeAll()
         
 //        for ele in notesList {
@@ -54,7 +56,6 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         temp = showList[indexPath.row]
         
         title.text = temp.title
-        //        cell.textLabel?.text = temp.title
         return cell
     }
 
@@ -66,12 +67,57 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
             if let index = indexPath {
                 notes.titleString = showList[index.row].title
                 notes.contentString = showList[index.row].content
-                //                notes.folderName = folderList[index.row].name
+                notes.notesIndex = index.row
             }
-            //            let note = sender as! NotesModel
-            //            detail.label = note.title
+        }
+        else if segue.identifier == "addNote" {
+            let notes = segue.destination as! NotesDetailViewController
+            notes.isAdd = 1
         }
     }
+    
+    @IBAction func close(_ segue: UIStoryboardSegue) {
+        print("closed!")
+        notesTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        folderList[folderIndex].notes = showList
+        notesTableView.reloadData()
+    }
+    
+    //edit mode
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        notesTableView.setEditing(editing, animated: animated)
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return self.isEditing
+    }
+    
+    //move cell
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let note = showList.remove(at: sourceIndexPath.row)
+        showList.insert(note, at: destinationIndexPath.row)
+    }
+    
+    //delete cell
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            showList.remove(at: indexPath.row)
+            folderList[folderIndex].notes = showList
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+
+    
     
     /*
     // MARK: - Navigation

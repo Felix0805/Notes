@@ -63,10 +63,11 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showNotes" {
-//            let notes = segue.destination as! NotesSecondViewController
+            let notes = segue.destination as! NotesSecondViewController
             let indexPath = notesMainTableView.indexPathForSelectedRow
             if let index = indexPath {
                 showList = folderList[index.row].notes
+                notes.folderIndex = index.row
 //                notes.folderName = folderList[index.row].name
             }
 //            let note = sender as! NotesModel
@@ -116,14 +117,14 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             
-            var temp : [NotesModel] = []
-            for e in notesList {
-                if e.fname != folderList[indexPath.row].name {
-                    temp.append(e)
-                }
-                
-            }
-            notesList = temp
+//            var temp : [NotesModel] = []
+//            for e in notesList {
+//                if e.fname != folderList[indexPath.row].name {
+//                    temp.append(e)
+//                }
+//                
+//            }
+//            notesList = temp
             folderList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
@@ -132,6 +133,12 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
+    
+    @IBAction func close(_ segue: UIStoryboardSegue) {
+        print("closed!")
+    }
+    
+    
     
     /*
     // MARK: - Navigation

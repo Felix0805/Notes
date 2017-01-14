@@ -23,12 +23,10 @@ class RemindersModel : NSObject{
 class NotesModel : NSObject {
     var title: String
     var content: String
-    var fname: String
     
-    init(title: String, content: String, fname: String) {
+    init(title: String, content: String) {
         self.title = title
         self.content = content
-        self.fname = fname
     }
 }
 

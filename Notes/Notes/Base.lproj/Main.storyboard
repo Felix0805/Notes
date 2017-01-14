@@ -81,7 +81,7 @@
             </objects>
             <point key="canvasLocation" x="900" y="-333"/>
         </scene>
-        <!--Notes Main View Controller-->
+        <!--Folders-->
         <scene sceneID="i77-7a-Kxh">
             <objects>
                 <viewController id="Chn-1s-nQs" customClass="NotesMainViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VRl-3g-a89">
-                                <rect key="frame" x="0.0" y="45" width="320" height="474"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="37" id="WZl-mD-f3v">
@@ -127,9 +127,9 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="n5B-r3-FSW">
-                                <rect key="frame" x="0.0" y="64" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="5cJ-BA-Acq"/>
+                                    <constraint firstAttribute="height" constant="40" id="5cJ-BA-Acq"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -142,14 +142,14 @@
                             <constraint firstItem="n5B-r3-FSW" firstAttribute="centerX" secondItem="9h8-Vy-ZAr" secondAttribute="centerX" id="FFo-h2-soe"/>
                             <constraint firstItem="n5B-r3-FSW" firstAttribute="top" secondItem="Ipm-qf-Che" secondAttribute="bottom" id="PJj-1M-0cR"/>
                             <constraint firstAttribute="trailing" secondItem="n5B-r3-FSW" secondAttribute="trailing" id="XuJ-k3-WH3"/>
-                            <constraint firstItem="VRl-3g-a89" firstAttribute="top" secondItem="9h8-Vy-ZAr" secondAttribute="top" constant="45" id="bBD-4r-nwH"/>
+                            <constraint firstItem="VRl-3g-a89" firstAttribute="top" secondItem="9h8-Vy-ZAr" secondAttribute="top" constant="40" id="bBD-4r-nwH"/>
                             <constraint firstAttribute="trailing" secondItem="VRl-3g-a89" secondAttribute="trailing" id="c4F-gU-gCv"/>
                             <constraint firstItem="VRl-3g-a89" firstAttribute="leading" secondItem="9h8-Vy-ZAr" secondAttribute="leading" id="kZu-VY-EoM"/>
                             <constraint firstItem="n5B-r3-FSW" firstAttribute="leading" secondItem="9h8-Vy-ZAr" secondAttribute="leading" id="p0y-b3-jM5"/>
                             <constraint firstItem="rqJ-0f-p5z" firstAttribute="top" secondItem="VRl-3g-a89" secondAttribute="bottom" id="yA2-IN-YyG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1yT-Ov-ang">
+                    <navigationItem key="navigationItem" title="Folders" id="1yT-Ov-ang">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sjg-sz-sol">
                             <connections>
                                 <action selector="edit:" destination="Chn-1s-nQs" id="zf0-7C-AP3"/>
@@ -174,7 +174,7 @@
             </objects>
             <point key="canvasLocation" x="1850.625" y="-333.80281690140845"/>
         </scene>
-        <!--Notes Second View Controller-->
+        <!--Notes-->
         <scene sceneID="WVI-6O-FO0">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="A3q-Ol-rfr" customClass="NotesSecondViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -187,9 +187,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lN9-yi-1i6">
-                                <rect key="frame" x="0.0" y="64" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="xZF-ty-nBH"/>
+                                    <constraint firstAttribute="height" constant="40" id="xZF-ty-nBH"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -197,7 +197,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-2F-IO3">
-                                <rect key="frame" x="0.0" y="109" width="320" height="410"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="415"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noteCell" id="qNH-XX-RLp">
@@ -222,21 +222,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neo-z3-1RB">
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6EI-Tm-4y4"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="PVT-1m-zYY" userLabel="Notes">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uEy-bK-WlO">
+                                            <connections>
+                                                <segue destination="qbX-Tw-JAl" kind="push" identifier="addNote" id="OHD-Fq-gwa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IIC-2F-IO3" firstAttribute="top" secondItem="lN9-yi-1i6" secondAttribute="bottom" id="0AK-Qx-dy4"/>
+                            <constraint firstAttribute="trailing" secondItem="neo-z3-1RB" secondAttribute="trailing" id="7fy-dr-Px1"/>
                             <constraint firstItem="lN9-yi-1i6" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="CGz-tR-Rfc"/>
-                            <constraint firstItem="IIC-2F-IO3" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="I9n-1g-Pa6"/>
+                            <constraint firstItem="neo-z3-1RB" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="Dlc-lR-Kdg"/>
+                            <constraint firstItem="IIC-2F-IO3" firstAttribute="top" secondItem="lN9-yi-1i6" secondAttribute="bottom" id="J9X-e0-cff"/>
                             <constraint firstItem="lN9-yi-1i6" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="TDn-mc-3Hd"/>
-                            <constraint firstItem="iPF-TH-1H3" firstAttribute="top" secondItem="IIC-2F-IO3" secondAttribute="bottom" id="hGv-WX-2IN"/>
-                            <constraint firstItem="IIC-2F-IO3" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="jsm-ve-gq4"/>
+                            <constraint firstAttribute="bottom" secondItem="neo-z3-1RB" secondAttribute="bottom" id="cDJ-vg-hPU"/>
+                            <constraint firstItem="IIC-2F-IO3" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="e2C-RO-EnD"/>
+                            <constraint firstItem="neo-z3-1RB" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="g94-4J-UDD"/>
+                            <constraint firstItem="iPF-TH-1H3" firstAttribute="top" secondItem="IIC-2F-IO3" secondAttribute="bottom" id="lLz-XW-Vvr"/>
+                            <constraint firstAttribute="trailing" secondItem="IIC-2F-IO3" secondAttribute="trailing" id="ogz-zO-pNX"/>
                             <constraint firstItem="lN9-yi-1i6" firstAttribute="top" secondItem="FZd-Ws-VVc" secondAttribute="bottom" id="omn-pA-acb"/>
                             <constraint firstAttribute="trailing" secondItem="lN9-yi-1i6" secondAttribute="trailing" id="v1F-iK-PaP"/>
-                            <constraint firstAttribute="trailing" secondItem="IIC-2F-IO3" secondAttribute="trailing" id="zbe-Kf-AcL"/>
+                            <constraint firstItem="IIC-2F-IO3" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="y4K-y7-Oq3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IPj-uC-IYD"/>
+                    <navigationItem key="navigationItem" title="Notes" id="IPj-uC-IYD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="XuS-6Y-KuZ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="notesTableView" destination="IIC-2F-IO3" id="mWQ-CO-2Mz"/>
                         <outlet property="searchDisplayController" destination="BHN-xZ-Tg5" id="7De-dr-iZC"/>
@@ -255,7 +276,7 @@
             </objects>
             <point key="canvasLocation" x="2745" y="-334.85915492957747"/>
         </scene>
-        <!--Notes Detail View Controller-->
+        <!--Note-->
         <scene sceneID="obj-bw-EvF">
             <objects>
                 <viewController id="qbX-Tw-JAl" customClass="NotesDetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
@@ -297,7 +318,13 @@
                             <constraint firstItem="ROD-bZ-O4k" firstAttribute="centerX" secondItem="fe4-Wr-i8Y" secondAttribute="centerX" id="tQl-2h-E3U"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ARW-Hm-v4N"/>
+                    <navigationItem key="navigationItem" title="Note" id="O7D-cw-Bad">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jSz-ef-7xR">
+                            <connections>
+                                <action selector="SaveFunc:" destination="qbX-Tw-JAl" id="yqG-oB-8VL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="b8v-yy-b5e" id="Rux-Ya-FMe"/>
                         <outlet property="titleTextField" destination="ROD-bZ-O4k" id="20J-VL-dBM"/>
@@ -305,11 +332,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ids-PJ-JK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3740.625" y="-334.85915492957747"/>
+            <point key="canvasLocation" x="3833" y="-335"/>
         </scene>
     </scenes>
     <resources>
         <image name="reminders" width="16" height="16"/>
         <image name="take-notes" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OHD-Fq-gwa"/>
+    </inferredMetricsTieBreakers>
 </document>
