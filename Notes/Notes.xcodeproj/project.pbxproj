@@ -14,7 +14,7 @@
 		FEAA3A441E278337002FB1A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA3A421E278337002FB1A4 /* LaunchScreen.storyboard */; };
 		FEAA3A4D1E278392002FB1A4 /* RemindersMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */; };
 		FEAA3A4E1E278392002FB1A4 /* RemindersMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEAA3A4C1E278392002FB1A4 /* RemindersMainViewController.xib */; };
-		FEAA3A501E27850E002FB1A4 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A4F1E27850E002FB1A4 /* func.swift */; };
+		FEAA3A501E27850E002FB1A4 /* Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A4F1E27850E002FB1A4 /* Func.swift */; };
 		FEAA3A521E27856E002FB1A4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A511E27856E002FB1A4 /* Model.swift */; };
 		FEAA3A541E2786C5002FB1A4 /* NotesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A531E2786C5002FB1A4 /* NotesMainViewController.swift */; };
 		FEAA3A561E27A9F7002FB1A4 /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A551E27A9F7002FB1A4 /* NotesDetailViewController.swift */; };
@@ -31,7 +31,7 @@
 		FEAA3A451E278337002FB1A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersMainViewController.swift; sourceTree = "<group>"; };
 		FEAA3A4C1E278392002FB1A4 /* RemindersMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemindersMainViewController.xib; sourceTree = "<group>"; };
-		FEAA3A4F1E27850E002FB1A4 /* func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = func.swift; sourceTree = "<group>"; };
+		FEAA3A4F1E27850E002FB1A4 /* Func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Func.swift; sourceTree = "<group>"; };
 		FEAA3A511E27856E002FB1A4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		FEAA3A531E2786C5002FB1A4 /* NotesMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesMainViewController.swift; sourceTree = "<group>"; };
 		FEAA3A551E27A9F7002FB1A4 /* NotesDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 				FEAA3A451E278337002FB1A4 /* Info.plist */,
 				FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */,
 				18179B731E2A3B8200196641 /* RemindersDetailViewController.swift */,
-				FEAA3A4F1E27850E002FB1A4 /* func.swift */,
+				FEAA3A4F1E27850E002FB1A4 /* Func.swift */,
 				FEAA3A511E27856E002FB1A4 /* Model.swift */,
 				FEAA3A4C1E278392002FB1A4 /* RemindersMainViewController.xib */,
 			);
@@ -117,7 +117,7 @@
 				TargetAttributes = {
 					FEAA3A351E278337002FB1A4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NA45C6WCAZ;
+						DevelopmentTeam = DV6WT8JT69;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -166,7 +166,7 @@
 				FEAA3A521E27856E002FB1A4 /* Model.swift in Sources */,
 				FEB6D1221E28A75500016A83 /* NotesSecondViewController.swift in Sources */,
 				FEAA3A4D1E278392002FB1A4 /* RemindersMainViewController.swift in Sources */,
-				FEAA3A501E27850E002FB1A4 /* func.swift in Sources */,
+				FEAA3A501E27850E002FB1A4 /* Func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,10 +289,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NA45C6WCAZ;
+				DEVELOPMENT_TEAM = DV6WT8JT69;
 				INFOPLIST_FILE = Notes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.NotesandReminder;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -302,10 +302,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NA45C6WCAZ;
+				DEVELOPMENT_TEAM = DV6WT8JT69;
 				INFOPLIST_FILE = Notes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.NotesandReminder;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

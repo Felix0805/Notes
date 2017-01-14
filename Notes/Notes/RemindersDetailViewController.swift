@@ -25,19 +25,15 @@ class RemindersDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if(reminder == nil) {
-            print("xinjian Reminder")
             navigationController?.title = "新建Reminder"
         }
         else {
             navigationController?.title = "修改Reminder"
-            print("xiugai Reminder")
             titleItem.text = reminder?.title
             contentsItem.text = reminder?.content
-            dateItem.setDate((reminder?.date)!, animated: false)
+//            dateItem.setDate((reminder?.date)!, animated: false)
             levelItem.setValue(float_t((reminder?.level)!)/10.0, animated: true)
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,21 +42,16 @@ class RemindersDetailViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: AnyObject) {
-        print("Hello")
         if(reminder == nil) {
             reminder = RemindersModel(title: titleItem.text!, content: contentsItem.text!, date:dateItem.date, level: Int(levelItem.value * 10))
             remindersList.append(reminder!)
-            
 
-            /*            let locale = Locale.current
-             let dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy-MM-dd", options:0, locale:locale)
-             let dateFormatter = DateFormatter()
-             dateFormatter.dateFormat = dateFormat*/
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             var array = NSMutableArray()
             var num = 0
-            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.dat"
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.txt"
+            remindersList.sort(by: reminderSort)
             for item in remindersList {
                 array.insert(item.title, at: num)
                 num = num + 1
@@ -87,9 +78,10 @@ class RemindersDetailViewController: UIViewController {
              let dateFormatter = DateFormatter()
              dateFormatter.dateFormat = dateFormat*/
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "yyyy-MM-dd" 
             
-            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.dat"
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.txt"
+            remindersList.sort(by: reminderSort)
             for item in remindersList {
                 array.insert(item.title, at: num)
                 num = num + 1
@@ -106,17 +98,6 @@ class RemindersDetailViewController: UIViewController {
         }
     }
     
-    
-    /*    @IBAction func saveReminder(_ sender: Any) {
-     print("Hello")
-     //        self.presentingViewController?.dismiss(animated: true, completion: nil)
-     
-     if(reminder == nil) {
-     reminder = RemindersModel(title: titleItem.text!, content: contentsItem.text, date:dateItem.date, level: "1")
-     print(titleItem.text!)
-     remindersList.append(reminder!)
-     }
-     }*/
     /*
      // MARK: - Navigation
      
