@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VRl-3g-a89">
-                                <rect key="frame" x="0.0" y="40" width="320" height="479"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NotesCell" rowHeight="37" id="WZl-mD-f3v">
@@ -126,26 +126,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="n5B-r3-FSW">
-                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="5cJ-BA-Acq"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Chn-1s-nQs" id="rew-so-dCG"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="n5B-r3-FSW" firstAttribute="centerX" secondItem="9h8-Vy-ZAr" secondAttribute="centerX" id="FFo-h2-soe"/>
-                            <constraint firstItem="n5B-r3-FSW" firstAttribute="top" secondItem="Ipm-qf-Che" secondAttribute="bottom" id="PJj-1M-0cR"/>
-                            <constraint firstAttribute="trailing" secondItem="n5B-r3-FSW" secondAttribute="trailing" id="XuJ-k3-WH3"/>
-                            <constraint firstItem="VRl-3g-a89" firstAttribute="top" secondItem="9h8-Vy-ZAr" secondAttribute="top" constant="40" id="bBD-4r-nwH"/>
+                            <constraint firstItem="VRl-3g-a89" firstAttribute="top" secondItem="9h8-Vy-ZAr" secondAttribute="top" id="bBD-4r-nwH"/>
                             <constraint firstAttribute="trailing" secondItem="VRl-3g-a89" secondAttribute="trailing" id="c4F-gU-gCv"/>
                             <constraint firstItem="VRl-3g-a89" firstAttribute="leading" secondItem="9h8-Vy-ZAr" secondAttribute="leading" id="kZu-VY-EoM"/>
-                            <constraint firstItem="n5B-r3-FSW" firstAttribute="leading" secondItem="9h8-Vy-ZAr" secondAttribute="leading" id="p0y-b3-jM5"/>
                             <constraint firstItem="rqJ-0f-p5z" firstAttribute="top" secondItem="VRl-3g-a89" secondAttribute="bottom" id="yA2-IN-YyG"/>
                         </constraints>
                     </view>
@@ -165,7 +151,6 @@
                 <searchDisplayController id="tzO-E5-Pk0">
                     <connections>
                         <outlet property="delegate" destination="Chn-1s-nQs" id="EwX-R4-Ndq"/>
-                        <outlet property="searchBar" destination="n5B-r3-FSW" id="EPz-gU-faZ"/>
                         <outlet property="searchContentsController" destination="Chn-1s-nQs" id="82c-lO-Zo7"/>
                         <outlet property="searchResultsDataSource" destination="Chn-1s-nQs" id="Ab1-3O-VXd"/>
                         <outlet property="searchResultsDelegate" destination="Chn-1s-nQs" id="r1W-4J-sNP"/>
@@ -186,25 +171,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="lN9-yi-1i6">
-                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="xZF-ty-nBH"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="A3q-Ol-rfr" id="DNK-3Z-XpI"/>
-                                </connections>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-2F-IO3">
-                                <rect key="frame" x="0.0" y="104" width="320" height="415"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIC-2F-IO3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noteCell" id="qNH-XX-RLp">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="37" id="qNH-XX-RLp">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="37"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qNH-XX-RLp" id="REP-9E-aN2">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="36"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGk-Ec-vcb">
@@ -225,7 +200,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neo-z3-1RB">
                                 <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="6EI-Tm-4y4"/>
+                                    <constraint firstAttribute="height" constant="40" id="xGX-4t-he1"/>
                                 </constraints>
                                 <items>
                                     <navigationItem id="PVT-1m-zYY" userLabel="Notes">
@@ -240,19 +215,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="neo-z3-1RB" secondAttribute="trailing" id="7fy-dr-Px1"/>
-                            <constraint firstItem="lN9-yi-1i6" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="CGz-tR-Rfc"/>
-                            <constraint firstItem="neo-z3-1RB" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="Dlc-lR-Kdg"/>
-                            <constraint firstItem="IIC-2F-IO3" firstAttribute="top" secondItem="lN9-yi-1i6" secondAttribute="bottom" id="J9X-e0-cff"/>
-                            <constraint firstItem="lN9-yi-1i6" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="TDn-mc-3Hd"/>
-                            <constraint firstAttribute="bottom" secondItem="neo-z3-1RB" secondAttribute="bottom" id="cDJ-vg-hPU"/>
-                            <constraint firstItem="IIC-2F-IO3" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="e2C-RO-EnD"/>
-                            <constraint firstItem="neo-z3-1RB" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="g94-4J-UDD"/>
-                            <constraint firstItem="iPF-TH-1H3" firstAttribute="top" secondItem="IIC-2F-IO3" secondAttribute="bottom" id="lLz-XW-Vvr"/>
-                            <constraint firstAttribute="trailing" secondItem="IIC-2F-IO3" secondAttribute="trailing" id="ogz-zO-pNX"/>
-                            <constraint firstItem="lN9-yi-1i6" firstAttribute="top" secondItem="FZd-Ws-VVc" secondAttribute="bottom" id="omn-pA-acb"/>
-                            <constraint firstAttribute="trailing" secondItem="lN9-yi-1i6" secondAttribute="trailing" id="v1F-iK-PaP"/>
-                            <constraint firstItem="IIC-2F-IO3" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="y4K-y7-Oq3"/>
+                            <constraint firstItem="iPF-TH-1H3" firstAttribute="top" secondItem="IIC-2F-IO3" secondAttribute="bottom" constant="8" symbolic="YES" id="8RN-iG-1bO"/>
+                            <constraint firstItem="IIC-2F-IO3" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="VpY-jb-joN"/>
+                            <constraint firstItem="neo-z3-1RB" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="YSa-nH-QGK"/>
+                            <constraint firstAttribute="trailing" secondItem="neo-z3-1RB" secondAttribute="trailing" id="d5Q-5h-dDu"/>
+                            <constraint firstItem="IIC-2F-IO3" firstAttribute="top" secondItem="wxQ-TF-uYm" secondAttribute="top" id="eRj-xQ-BM7"/>
+                            <constraint firstItem="IIC-2F-IO3" firstAttribute="centerX" secondItem="wxQ-TF-uYm" secondAttribute="centerX" id="eux-VD-Hn0"/>
+                            <constraint firstItem="neo-z3-1RB" firstAttribute="leading" secondItem="wxQ-TF-uYm" secondAttribute="leading" id="fQZ-HR-IYd"/>
+                            <constraint firstAttribute="trailing" secondItem="IIC-2F-IO3" secondAttribute="trailing" id="gz4-BI-Wnj"/>
+                            <constraint firstAttribute="bottom" secondItem="neo-z3-1RB" secondAttribute="bottom" id="t5q-Zn-Aq9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="IPj-uC-IYD">
@@ -267,7 +238,6 @@
                 <searchDisplayController id="BHN-xZ-Tg5">
                     <connections>
                         <outlet property="delegate" destination="A3q-Ol-rfr" id="yiN-uT-PHD"/>
-                        <outlet property="searchBar" destination="lN9-yi-1i6" id="a7p-MF-u0W"/>
                         <outlet property="searchContentsController" destination="A3q-Ol-rfr" id="MdK-nb-AqJ"/>
                         <outlet property="searchResultsDataSource" destination="A3q-Ol-rfr" id="f48-TW-bNz"/>
                         <outlet property="searchResultsDelegate" destination="A3q-Ol-rfr" id="iQB-N9-ZeE"/>

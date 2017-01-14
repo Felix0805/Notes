@@ -10,11 +10,13 @@ import UIKit
 var notesList: [NotesModel] = [NotesModel(title: "ANotes", content: "AContent"),
                                NotesModel(title: "BNotes", content: "BContend")]
 var showList: [NotesModel] = []
+var filterShowList: [NotesModel] = []
 
-class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchResultsUpdating {
 
     var folderName = "init";
     var folderIndex = 0;
+    let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var notesTableView: UITableView!
     override func viewDidLoad() {
@@ -27,14 +29,17 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         notesTableView.dataSource = self
         
         navigationItem.rightBarButtonItem = editButtonItem
-//        showList.removeAll()
         
-//        for ele in notesList {
-//            if ele.fname == folderName {
-//                showList.append(NotesModel(title: ele.title, content: ele.content, fname: ele.fname))
-//            }
-//        }
-//        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        notesTableView.tableHeaderView = searchController.searchBar
+        
+        // hide the search bar
+        var contentOffset = notesTableView.contentOffset
+        contentOffset.y += searchController.searchBar.frame.size.height
+        notesTableView.contentOffset = contentOffset
+//
     }
 
     
@@ -45,7 +50,12 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showList.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filterShowList.count
+        }
+        else {
+            return showList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +63,12 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         //        let cell = UITableViewCell()
         let title = cell.viewWithTag(201) as! UILabel
         var temp: NotesModel
-        temp = showList[indexPath.row]
+        if searchController.isActive && searchController.searchBar.text != "" {
+            temp = filterShowList[indexPath.row]
+        }
+        else {
+            temp = showList[indexPath.row]
+        }
         
         title.text = temp.title
         return cell
@@ -117,7 +132,18 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         return 40
     }
 
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContent(searchText: self.searchController.searchBar.text! )
+    }
     
+    func filterContent(searchText:String) {
+        filterShowList = showList.filter { n in
+            let name = n.title
+            return (name.contains(searchText))
+        }
+        notesTableView.reloadData()
+    }
     
     /*
     // MARK: - Navigation

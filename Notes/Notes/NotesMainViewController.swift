@@ -10,11 +10,13 @@ import UIKit
 
 
 var folderList: [FoldersModel] = [FoldersModel(name: "AFolder", notes: notesList),FoldersModel(name: "BFolder", notes:notesList)]
+var filterFolderList: [FoldersModel] = []
 
-
-class NotesMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotesMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
     @IBOutlet weak var notesMainTableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
 //    folderList = [FoldersModel(name: "AFolder"),FoldersModel(name: "BFolder")]
     
@@ -29,10 +31,15 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-//        // hide the search bar
-//        var contentOffset = notesMainTableView.contentOffset
-//        contentOffset.y += searchDisplayController!.searchBar.frame.size.height
-//        notesMainTableView.contentOffset = contentOffset
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        notesMainTableView.tableHeaderView = searchController.searchBar
+        
+        // hide the search bar
+        var contentOffset = notesMainTableView.contentOffset
+        contentOffset.y += searchController.searchBar.frame.size.height
+        notesMainTableView.contentOffset = contentOffset
         
         
         // Do any additional setup after loading the view.
@@ -45,7 +52,12 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return folderList.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filterFolderList.count
+        }
+        else {
+            return folderList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +65,12 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
 //        let cell = UITableViewCell()
         let title = cell.viewWithTag(101) as! UILabel
         var temp: FoldersModel
-        temp = folderList[indexPath.row]
+        if searchController.isActive && searchController.searchBar.text != "" {
+            temp = filterFolderList[indexPath.row]
+        }
+        else {
+            temp = folderList[indexPath.row]
+        }
         title.text = temp.name
 //        cell.textLabel?.text = temp.title
         return cell
@@ -139,7 +156,18 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContent(searchText: self.searchController.searchBar.text! )
+    }
     
+    func filterContent(searchText:String) {
+        filterFolderList = folderList.filter { n in
+            let name = n.name
+            return (name.contains(searchText))
+        }
+        notesMainTableView.reloadData()
+    }
     /*
     // MARK: - Navigation
 
