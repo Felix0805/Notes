@@ -33,6 +33,7 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.frame.size.height = 40
         definesPresentationContext = true
         notesMainTableView.tableHeaderView = searchController.searchBar
         

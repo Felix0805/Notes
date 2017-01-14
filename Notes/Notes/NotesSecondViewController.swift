@@ -33,12 +33,11 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
+        searchController.searchBar.frame.size.height = 40
+
         notesTableView.tableHeaderView = searchController.searchBar
         
-        // hide the search bar
-        var contentOffset = notesTableView.contentOffset
-        contentOffset.y += searchController.searchBar.frame.size.height
-        notesTableView.contentOffset = contentOffset
+
 //
     }
 
