@@ -117,7 +117,7 @@
 				TargetAttributes = {
 					FEAA3A351E278337002FB1A4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = DV6WT8JT69;
+						DevelopmentTeam = NA45C6WCAZ;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -289,10 +289,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DV6WT8JT69;
+				DEVELOPMENT_TEAM = NA45C6WCAZ;
 				INFOPLIST_FILE = Notes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.Notes;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.NotesAndReminders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -302,10 +302,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = DV6WT8JT69;
+				DEVELOPMENT_TEAM = NA45C6WCAZ;
 				INFOPLIST_FILE = Notes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.Notes;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.NotesAndReminders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

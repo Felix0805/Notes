@@ -277,6 +277,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="abc" destination="jhe-js-Hvq" id="zoA-Bp-M7z"/>
                         <outlet property="contentTextView" destination="b8v-yy-b5e" id="Rux-Ya-FMe"/>
                         <outlet property="titleTextField" destination="ROD-bZ-O4k" id="20J-VL-dBM"/>
                     </connections>
