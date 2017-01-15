@@ -34,6 +34,23 @@ class RemindersDetailViewController: UIViewController {
 //            dateItem.setDate((reminder?.date)!, animated: false)
             levelItem.setValue(float_t((reminder?.level)!)/10.0, animated: true)
         }
+
+        let swipe = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipe.direction = .left
+        self.view.addGestureRecognizer(swipe)
+        
+        let swipe2 = UISwipeGestureRecognizer(target:self, action:#selector(swipe2(_:)))
+        swipe2.direction = .right
+        self.view.addGestureRecognizer(swipe2)
+        
+        let swipe3 = UISwipeGestureRecognizer(target:self, action:#selector(swipe3(_:)))
+        swipe3.direction = .up
+        self.view.addGestureRecognizer(swipe3)
+        
+        let swipe4 = UISwipeGestureRecognizer(target:self, action:#selector(swipe4(_:)))
+        swipe4.direction = .down
+        self.view.addGestureRecognizer(swipe4)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,6 +113,23 @@ class RemindersDetailViewController: UIViewController {
             
             
         }
+    }
+    
+    
+    func swipe(_ recognizer:UISwipeGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    func swipe2(_ recognizer:UISwipeGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    func swipe3(_ recognizer:UISwipeGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    func swipe4(_ recognizer:UISwipeGestureRecognizer){
+        self.view.endEditing(true)
     }
     
     /*

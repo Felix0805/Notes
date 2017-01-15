@@ -9,10 +9,13 @@
 import UIKit
 
 var remindersList: [RemindersModel] = []
+var filterRemindersList: [RemindersModel] = []
 
-class RemindersMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class RemindersMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchResultsUpdating{
     
     @IBOutlet weak var RemindersMain: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     var fileReminderList:NSArray?
     
@@ -58,6 +61,18 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
         RemindersMain.dataSource = self
         
         navigationItem.leftBarButtonItem = editButtonItem
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.frame.size.height = 40
+        definesPresentationContext = true
+        RemindersMain.tableHeaderView = searchController.searchBar
+        
+        // hide the search bar
+        var contentOffset = RemindersMain.contentOffset
+        contentOffset.y += searchController.searchBar.frame.size.height
+        RemindersMain.contentOffset = contentOffset
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,7 +82,12 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return remindersList.count
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filterRemindersList.count
+        }
+        else {
+            return remindersList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +98,12 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
         let level = cell.viewWithTag(303) as! UILabel
         
         var temp: RemindersModel
-        temp = remindersList[indexPath.row]
+        if searchController.isActive && searchController.searchBar.text != "" {
+            temp = filterRemindersList[indexPath.row]
+        }
+        else {
+            temp = remindersList[indexPath.row]
+        }
         print(indexPath.row)
         title.text = temp.title
         let formatter = DateFormatter()
@@ -201,6 +226,20 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContent(searchText: self.searchController.searchBar.text! )
+    }
+    
+    func filterContent(searchText:String) {
+        filterRemindersList = remindersList.filter { n in
+            let name = n.title
+            return (name.contains(searchText))
+        }
+        RemindersMain.reloadData()
+    }
+    
     /*
      // MARK: - Navigation
      
