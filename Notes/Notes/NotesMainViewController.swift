@@ -13,9 +13,42 @@ var folderList: [FoldersModel] = [FoldersModel(name: "AFolder", notes: notesList
 var filterFolderList: [FoldersModel] = []
 
 class NotesMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
-
-    @IBOutlet weak var notesMainTableView: UITableView!
     
+    
+    @IBOutlet weak var notesMainTableView: UITableView!
+
+    @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
+        print("in")
+            
+            let touchPoint = sender.location(in: self.view)
+            if notesMainTableView.indexPathForRow(at: touchPoint) != nil {
+                let indexPath = notesMainTableView.indexPathForRow(at: touchPoint)
+                var str = folderList[(indexPath?.row)!].name
+               // print(indexPath?.row)
+                let alertController = UIAlertController(title: "Rename Folder", message: "Enter a new name for this folder", preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+                let okAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default) {
+                    (action: UIAlertAction!) -> Void in
+                    let login = (alertController.textFields?.first)! as UITextField
+                    if let temp = login.text {
+                        if !temp.isEmpty {
+                            folderList[(indexPath?.row)!].name = temp
+                            self.notesMainTableView.reloadData()
+                        }
+                    }
+                }
+                alertController.addTextField {
+                    (textField: UITextField!) -> Void in
+                    textField.placeholder = str
+                }
+
+                alertController.addAction(cancelAction)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+                // your code here, get the row for the indexPath or do whatever you want
+            }
+    }
+        
     let searchController = UISearchController(searchResultsController: nil)
     
 //    folderList = [FoldersModel(name: "AFolder"),FoldersModel(name: "BFolder")]
@@ -42,10 +75,19 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
         contentOffset.y += searchController.searchBar.frame.size.height
         notesMainTableView.contentOffset = contentOffset
         
+
+
+        
+
+        
         
         // Do any additional setup after loading the view.
     }
 
+
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -134,19 +176,14 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            
-//            var temp : [NotesModel] = []
-//            for e in notesList {
-//                if e.fname != folderList[indexPath.row].name {
-//                    temp.append(e)
-//                }
-//                
-//            }
-//            notesList = temp
             folderList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
+        
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
@@ -169,6 +206,8 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         notesMainTableView.reloadData()
     }
+    
+    
     /*
     // MARK: - Navigation
 

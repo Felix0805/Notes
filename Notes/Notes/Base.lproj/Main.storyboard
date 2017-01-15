@@ -110,12 +110,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="VRl-3g-a89" firstAttribute="top" secondItem="9h8-Vy-ZAr" secondAttribute="top" id="bBD-4r-nwH"/>
                             <constraint firstAttribute="trailing" secondItem="VRl-3g-a89" secondAttribute="trailing" id="c4F-gU-gCv"/>
                             <constraint firstItem="VRl-3g-a89" firstAttribute="leading" secondItem="9h8-Vy-ZAr" secondAttribute="leading" id="kZu-VY-EoM"/>
                             <constraint firstItem="rqJ-0f-p5z" firstAttribute="top" secondItem="VRl-3g-a89" secondAttribute="bottom" id="yA2-IN-YyG"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jHI-KH-DrM" appends="YES" id="9cp-tq-YTR"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Folders" id="1yT-Ov-ang">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sjg-sz-sol">
@@ -138,6 +142,11 @@
                         <outlet property="searchResultsDelegate" destination="Chn-1s-nQs" id="r1W-4J-sNP"/>
                     </connections>
                 </searchDisplayController>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="jHI-KH-DrM">
+                    <connections>
+                        <action selector="longPress:" destination="Chn-1s-nQs" id="oe1-Dp-5qc"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1850.625" y="-333.80281690140845"/>
         </scene>
