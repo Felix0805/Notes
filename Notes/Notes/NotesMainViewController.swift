@@ -9,7 +9,8 @@
 import UIKit
 
 
-var folderList: [FoldersModel] = [FoldersModel(name: "AFolder", notes: notesList),FoldersModel(name: "BFolder", notes:notesList)]
+/*var folderList: [FoldersModel] = [FoldersModel(name: "AFolder", notes: notesList),FoldersModel(name: "BFolder", notes:notesList)]*/
+var folderList : [FoldersModel] = []
 var filterFolderList: [FoldersModel] = []
 
 class NotesMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
@@ -56,8 +57,41 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        notesList = [NotesModel(title: "ANotes", content: "AContent"),
-//                     NotesModel(title: "BNotes", content: "BContend")]
+        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
+        print(filePath)
+        
+        if let result : NSMutableArray = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? NSMutableArray{
+            
+            var folder : String = ""
+            var notesList : [NotesModel] = []
+            var title_t : String = ""
+            var content_t : String = ""
+            var count : Int
+            var i : Int
+            i = 0
+            while i < result.count {
+                notesList = []
+                folder = result[i] as! String
+                print(folder)
+                i = i + 1
+                count = Int((result[i] as! NSString).intValue)
+                i = i + 1
+                
+                for j in 0 ..< count {
+                    print("in")
+                    title_t = result[i] as! String
+                    print(title_t)
+                    i = i + 1
+                    content_t = result[i] as! String
+                    print(content_t)
+                    i = i + 1
+                    notesList.append(NotesModel(title: title_t, content: content_t))
+                }
+                folderList.append(FoldersModel(name: folder, notes: notesList))
+                
+            }
+            
+        }
 
         notesMainTableView.delegate = self
         notesMainTableView.dataSource = self
@@ -74,12 +108,6 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
         var contentOffset = notesMainTableView.contentOffset
         contentOffset.y += searchController.searchBar.frame.size.height
         notesMainTableView.contentOffset = contentOffset
-        
-
-
-        
-
-        
         
         // Do any additional setup after loading the view.
     }
@@ -145,6 +173,27 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
             if let temp = login.text {
                 if !temp.isEmpty {
                     folderList.append(FoldersModel(name: temp, notes: []))
+                    
+                    let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
+                    print(filePath)
+                    var array = NSMutableArray()
+                    var num = 0
+                    for item in folderList {
+                        array.insert(item.name, at: num)
+                        num = num + 1
+                        array.insert(item.notes.count.description, at: num)
+                        num = num + 1
+                        print(item.notes.count)
+                        for var i in 0 ..< item.notes.count {
+                            array.insert(item.notes[i].title, at: num)
+                            num = num + 1
+                            array.insert(item.notes[i].content, at: num)
+                            num = num + 1
+                            i = i + 1
+                        }
+                    }
+                    NSKeyedArchiver.archiveRootObject(array, toFile: filePath)
+                    
                     self.notesMainTableView.reloadData()
                 }
             }
@@ -177,6 +226,27 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             folderList.remove(at: indexPath.row)
+            
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
+            print(filePath)
+            var array = NSMutableArray()
+            var num = 0
+            for item in folderList {
+                array.insert(item.name, at: num)
+                num = num + 1
+                array.insert(item.notes.count.description, at: num)
+                num = num + 1
+                print(item.notes.count)
+                for var i in 0 ..< item.notes.count {
+                    array.insert(item.notes[i].title, at: num)
+                    num = num + 1
+                    array.insert(item.notes[i].content, at: num)
+                    num = num + 1
+                    i = i + 1
+                }
+            }
+            NSKeyedArchiver.archiveRootObject(array, toFile: filePath)
+            
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
         

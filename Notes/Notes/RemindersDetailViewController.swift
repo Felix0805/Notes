@@ -25,13 +25,12 @@ class RemindersDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if(reminder == nil) {
-            navigationController?.title = "新建Reminder"
         }
         else {
-            navigationController?.title = "修改Reminder"
+            
             titleItem.text = reminder?.title
             contentsItem.text = reminder?.content
-//            dateItem.setDate((reminder?.date)!, animated: false)
+            dateItem.setDate((reminder?.date)!, animated: false)
             levelItem.setValue(float_t((reminder?.level)!)/10.0, animated: true)
         }
 
