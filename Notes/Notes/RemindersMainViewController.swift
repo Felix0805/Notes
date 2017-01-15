@@ -85,8 +85,22 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
         formatter.dateFormat = "yyyy-MM-dd"
         
         dedline.text = formatter.string(from: temp.date)
-        level.text = String(temp.level)
-        
+ //        level.text = String(temp.level)
+        if temp.level <= 2 {
+            level.text = "!"
+        }
+        else if temp.level <= 4 {
+            level.text = "!!"
+        }
+        else if temp.level <= 6 {
+            level.text = "!!!"
+        }
+        else if temp.level <= 8 {
+            level.text = "!!!!"
+        }
+        else if temp.level <= 10 {
+            level.text = "!!!!!"
+        }
         let date = NSDate()
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "yyyy-MM-dd"
@@ -99,13 +113,13 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
             title.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
             dedline.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
             level.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
-            cell.backgroundColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
+            cell.backgroundColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.3)
         }
         else {
-            title.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-            dedline.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-            level.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
-            cell.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+            title.textColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+            dedline.textColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+            level.textColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
+            cell.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
         }
         
         
