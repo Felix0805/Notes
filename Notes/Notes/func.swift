@@ -31,8 +31,6 @@ func reminderSort(r1: RemindersModel, r2: RemindersModel) -> Bool{
     d2 = formatter.string(from: r2.date)
     if formatter.string(from: r1.date) < strNowTime {
         d1 = "3"+d1
-//        print("d1")
-//        print(d1)
     }
     if formatter.string(from: r2.date) < strNowTime {
         d2 = "3" + d2
@@ -43,30 +41,5 @@ func reminderSort(r1: RemindersModel, r2: RemindersModel) -> Bool{
     else {
         return d1 < d2
     }
-    
-/*    if formatter.string(from: r1.date) < strNowTime && formatter.string(from: r2.date) < strNowTime {
-        if formatter.string(from: r1.date) == formatter.string(from: r2.date) {
-            return r1.level > r2.level
-        }
-        else {
-            return formatter.string(from: r1.date) < formatter.string(from: r2.date)
-        }
-    }
-    //r1过期
-    else if formatter.string(from: r1.date) < strNowTime && formatter.string(from: r2.date) >= strNowTime{
-        return true
-    }
-    //r2过期
-    else if formatter.string(from: r2.date) < strNowTime && formatter.string(from: r1.date) >= strNowTime {
-        return false
-    }
-    else {
-        if formatter.string(from: r1.date) == formatter.string(from: r2.date) {
-            return r1.level > r2.level
-        }
-        else {
-            return formatter.string(from: r1.date) < formatter.string(from: r2.date)
-        }
-    }*/
 
 }

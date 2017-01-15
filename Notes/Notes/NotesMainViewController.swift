@@ -32,6 +32,25 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
                 if let temp = login.text {
                     if !temp.isEmpty {
                         folderList[(indexPath?.row)!].name = temp
+                        
+                        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
+                        var array = NSMutableArray()
+                        var num = 0
+                        for item in folderList {
+                            array.insert(item.name, at: num)
+                            num = num + 1
+                            array.insert(item.notes.count.description, at: num)
+                            num = num + 1
+                            for var i in 0 ..< item.notes.count {
+                                array.insert(item.notes[i].title, at: num)
+                                num = num + 1
+                                array.insert(item.notes[i].content, at: num)
+                                num = num + 1
+                                i = i + 1
+                            }
+                        }
+                        NSKeyedArchiver.archiveRootObject(array, toFile: filePath)
+                        
                         self.notesMainTableView.reloadData()
                     }
                 }
@@ -50,13 +69,10 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let searchController = UISearchController(searchResultsController: nil)
     
-//    folderList = [FoldersModel(name: "AFolder"),FoldersModel(name: "BFolder")]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
-        print(filePath)
         
         if let result : NSMutableArray = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? NSMutableArray{
             
@@ -70,18 +86,13 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
             while i < result.count {
                 notesList = []
                 folder = result[i] as! String
-                print(folder)
                 i = i + 1
                 count = Int((result[i] as! NSString).intValue)
                 i = i + 1
-                
                 for j in 0 ..< count {
-                    print("in")
                     title_t = result[i] as! String
-                    print(title_t)
                     i = i + 1
                     content_t = result[i] as! String
-                    print(content_t)
                     i = i + 1
                     notesList.append(NotesModel(title: title_t, content: content_t))
                 }
@@ -89,6 +100,11 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
             
+        }
+        else {
+            folderList = [FoldersModel(name: "folder1", notes: [NotesModel(title: "file1", content: "file1 content"),NotesModel(title: "file2", content: "file2 content")]),
+                          FoldersModel(name: "folder2", notes: [NotesModel(title: "file1", content: "file1 content"),NotesModel(title: "file2", content: "file2 content")])
+            ]
         }
 
         notesMainTableView.delegate = self
@@ -131,7 +147,6 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.notesMainTableView.dequeueReusableCell(withIdentifier: "NotesCell")! as UITableViewCell
-//        let cell = UITableViewCell()
         let title = cell.viewWithTag(101) as! UILabel
         var temp: FoldersModel
         if searchController.isActive && searchController.searchBar.text != "" {
@@ -141,7 +156,6 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
             temp = folderList[indexPath.row]
         }
         title.text = temp.name
-//        cell.textLabel?.text = temp.title
         return cell
     }
     
@@ -154,10 +168,7 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
             if let index = indexPath {
                 showList = folderList[index.row].notes
                 notes.folderIndex = index.row
-//                notes.folderName = folderList[index.row].name
             }
-//            let note = sender as! NotesModel
-//            detail.label = note.title
         }
     }
     
@@ -173,7 +184,6 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
                     folderList.append(FoldersModel(name: temp, notes: []))
                     
                     let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
-                    print(filePath)
                     var array = NSMutableArray()
                     var num = 0
                     for item in folderList {
@@ -181,7 +191,6 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
                         num = num + 1
                         array.insert(item.notes.count.description, at: num)
                         num = num + 1
-                        print(item.notes.count)
                         for var i in 0 ..< item.notes.count {
                             array.insert(item.notes[i].title, at: num)
                             num = num + 1
@@ -234,7 +243,6 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
                 num = num + 1
                 array.insert(item.notes.count.description, at: num)
                 num = num + 1
-                print(item.notes.count)
                 for var i in 0 ..< item.notes.count {
                     array.insert(item.notes[i].title, at: num)
                     num = num + 1
@@ -258,7 +266,7 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func close(_ segue: UIStoryboardSegue) {
-        print("closed!")
+        //print("closed!")
     }
     
     

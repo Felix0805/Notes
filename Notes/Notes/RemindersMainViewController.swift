@@ -22,9 +22,7 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.txt"
-        
-        print(filePath)
+        let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.dat"
         
         if let result : NSArray = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? NSArray{
             //处理
@@ -41,8 +39,6 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
                     content1 = (item as! String)
                 }
                 else if(num % 4 == 2) {
-                    print(item as! String)
-                    //date1 = dateFromString("2014-10-20")!
                     date1 = dateFromString(item as! String)!
                     
                 }
@@ -54,6 +50,11 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
                 num = num + 1
 
             }
+        }
+        else {
+            remindersList = [RemindersModel(title: "享受寒假", content: "祝老师们新年快乐！", date: dateFromString("2017-03-01")!, level: 6),
+                             RemindersModel(title: "移动互联大作业", content: "完成移动互联大作业，开发app", date: dateFromString("2017-01-14")!, level: 10)
+            ]
         }
         
         // Do any additional setup after loading the view.
@@ -104,13 +105,11 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
         else {
             temp = remindersList[indexPath.row]
         }
-        print(indexPath.row)
         title.text = temp.title
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
         dedline.text = formatter.string(from: temp.date)
- //        level.text = String(temp.level)
         if temp.level <= 2 {
             level.text = "!"
         }
@@ -130,11 +129,7 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "yyyy-MM-dd"
         let strNowTime = timeFormatter.string(from: date as Date) as String
-        print("-------++++")
-        print(strNowTime)
-        print (formatter.string(from: temp.date))
         if formatter.string(from: temp.date) < strNowTime {
-            print("yes")
             title.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
             dedline.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
             level.textColor = UIColor(red: 55/255, green: 55/255, blue: 55/255, alpha: 0.5)
@@ -146,9 +141,6 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
             level.textColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1)
             cell.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 0.5)
         }
-        
-        
-//        RemindersMain.reloadData()
         return cell
     }
     
@@ -165,7 +157,7 @@ class RemindersMainViewController: UIViewController, UITableViewDelegate, UITabl
             formatter.dateFormat = "yyyy-MM-dd"
             var array = NSMutableArray()
             var num = 0
-            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.txt"
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.dat"
             remindersList.sort(by: reminderSort)
             for item in remindersList {
                 array.insert(item.title, at: num)

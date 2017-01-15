@@ -67,7 +67,7 @@ class RemindersDetailViewController: UIViewController {
             formatter.dateFormat = "yyyy-MM-dd"
             var array = NSMutableArray()
             var num = 0
-            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.txt"
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.dat"
             remindersList.sort(by: reminderSort)
             for item in remindersList {
                 array.insert(item.title, at: num)
@@ -90,14 +90,10 @@ class RemindersDetailViewController: UIViewController {
             
             var array = NSMutableArray()
             var num = 0
-            /*            let locale = Locale.current
-             let dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy-MM-dd", options:0, locale:locale)
-             let dateFormatter = DateFormatter()
-             dateFormatter.dateFormat = dateFormat*/
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd" 
             
-            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.txt"
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/reminders.dat"
             remindersList.sort(by: reminderSort)
             for item in remindersList {
                 array.insert(item.title, at: num)

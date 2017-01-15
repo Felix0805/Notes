@@ -37,8 +37,6 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
 
         notesTableView.tableHeaderView = searchController.searchBar
         
-
-//
     }
 
     
@@ -59,7 +57,6 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.notesTableView.dequeueReusableCell(withIdentifier: "noteCell")! as UITableViewCell
-        //        let cell = UITableViewCell()
         let title = cell.viewWithTag(201) as! UILabel
         var temp: NotesModel
         if searchController.isActive && searchController.searchBar.text != "" {
@@ -91,7 +88,7 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func close(_ segue: UIStoryboardSegue) {
-        print("closed!")
+        //print("closed!")
         notesTableView.reloadData()
     }
     
@@ -100,7 +97,6 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
         folderList[folderIndex].notes = showList
         
         let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
-        print(filePath)
         var array = NSMutableArray()
         var num = 0
         for item in folderList {
@@ -108,7 +104,6 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
             num = num + 1
             array.insert(item.notes.count.description, at: num)
             num = num + 1
-            print(item.notes.count)
             for var i in 0 ..< item.notes.count {
                 array.insert(item.notes[i].title, at: num)
                 num = num + 1
@@ -144,6 +139,25 @@ class NotesSecondViewController: UIViewController, UITableViewDelegate, UITableV
             
             showList.remove(at: indexPath.row)
             folderList[folderIndex].notes = showList
+            
+            let filePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] + "/notes.dat"
+            var array = NSMutableArray()
+            var num = 0
+            for item in folderList {
+                array.insert(item.name, at: num)
+                num = num + 1
+                array.insert(item.notes.count.description, at: num)
+                num = num + 1
+                for var i in 0 ..< item.notes.count {
+                    array.insert(item.notes[i].title, at: num)
+                    num = num + 1
+                    array.insert(item.notes[i].content, at: num)
+                    num = num + 1
+                    i = i + 1
+                }
+            }
+            NSKeyedArchiver.archiveRootObject(array, toFile: filePath)
+            
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
     }

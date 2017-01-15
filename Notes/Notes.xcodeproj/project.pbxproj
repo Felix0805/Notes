@@ -10,6 +10,7 @@
 		18179B741E2A3B8200196641 /* RemindersDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18179B731E2A3B8200196641 /* RemindersDetailViewController.swift */; };
 		18A99E311E2B532D00455046 /* NotesAndReminders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A99E301E2B532D00455046 /* NotesAndReminders.storyboard */; };
 		18A99E331E2B537B00455046 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A99E321E2B537B00455046 /* icon.png */; };
+		18ED85F41E2B693A0017DEE2 /* README.pages in Resources */ = {isa = PBXBuildFile; fileRef = 18ED85F31E2B693A0017DEE2 /* README.pages */; };
 		FEAA3A3A1E278337002FB1A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA3A391E278337002FB1A4 /* AppDelegate.swift */; };
 		FEAA3A3F1E278337002FB1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA3A3D1E278337002FB1A4 /* Main.storyboard */; };
 		FEAA3A411E278337002FB1A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEAA3A401E278337002FB1A4 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		18179B731E2A3B8200196641 /* RemindersDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersDetailViewController.swift; sourceTree = "<group>"; };
 		18A99E301E2B532D00455046 /* NotesAndReminders.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NotesAndReminders.storyboard; sourceTree = "<group>"; };
 		18A99E321E2B537B00455046 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		18ED85F31E2B693A0017DEE2 /* README.pages */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.pages; sourceTree = "<group>"; };
 		FEAA3A361E278337002FB1A4 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEAA3A391E278337002FB1A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEAA3A3E1E278337002FB1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				FEAA3A451E278337002FB1A4 /* Info.plist */,
 				18A99E321E2B537B00455046 /* icon.png */,
 				FEAA3A4B1E278392002FB1A4 /* RemindersMainViewController.swift */,
+				18ED85F31E2B693A0017DEE2 /* README.pages */,
 				18179B731E2A3B8200196641 /* RemindersDetailViewController.swift */,
 				FEAA3A4F1E27850E002FB1A4 /* Func.swift */,
 				FEAA3A511E27856E002FB1A4 /* Model.swift */,
@@ -123,7 +126,7 @@
 				TargetAttributes = {
 					FEAA3A351E278337002FB1A4 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = NA45C6WCAZ;
+						DevelopmentTeam = DV6WT8JT69;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18ED85F41E2B693A0017DEE2 /* README.pages in Resources */,
 				18A99E331E2B537B00455046 /* icon.png in Resources */,
 				FEAA3A441E278337002FB1A4 /* LaunchScreen.storyboard in Resources */,
 				FEAA3A4E1E278392002FB1A4 /* RemindersMainViewController.xib in Resources */,
@@ -297,10 +301,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NA45C6WCAZ;
+				DEVELOPMENT_TEAM = DV6WT8JT69;
 				INFOPLIST_FILE = Notes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.NotesAnbReminders;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -310,10 +314,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = NA45C6WCAZ;
+				DEVELOPMENT_TEAM = DV6WT8JT69;
 				INFOPLIST_FILE = Notes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.NotesAnbReminders;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nju.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
