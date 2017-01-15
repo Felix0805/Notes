@@ -25,6 +25,7 @@ class RemindersDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if(reminder == nil) {
+            titleItem.placeholder = "Title"
         }
         else {
             

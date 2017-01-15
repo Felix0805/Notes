@@ -19,37 +19,35 @@ class NotesMainViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var notesMainTableView: UITableView!
 
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
-        print("in")
-            
-            let touchPoint = sender.location(in: self.view)
-            if notesMainTableView.indexPathForRow(at: touchPoint) != nil {
-                let indexPath = notesMainTableView.indexPathForRow(at: touchPoint)
-                var str = folderList[(indexPath?.row)!].name
-               // print(indexPath?.row)
-                let alertController = UIAlertController(title: "Rename Folder", message: "Enter a new name for this folder", preferredStyle: UIAlertControllerStyle.alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
-                let okAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default) {
-                    (action: UIAlertAction!) -> Void in
-                    let login = (alertController.textFields?.first)! as UITextField
-                    if let temp = login.text {
-                        if !temp.isEmpty {
-                            folderList[(indexPath?.row)!].name = temp
-                            self.notesMainTableView.reloadData()
-                        }
+        let touchPoint = sender.location(in: self.notesMainTableView)
+        if notesMainTableView.indexPathForRow(at: touchPoint) != nil {
+            let indexPath = notesMainTableView.indexPathForRow(at: touchPoint)
+            let str = folderList[(indexPath?.row)!].name
+            // print(indexPath?.row)
+            let alertController = UIAlertController(title: "Rename Folder", message: "Enter a new name for this folder", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+            let okAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default) {
+                (action: UIAlertAction!) -> Void in
+                let login = (alertController.textFields?.first)! as UITextField
+                if let temp = login.text {
+                    if !temp.isEmpty {
+                        folderList[(indexPath?.row)!].name = temp
+                        self.notesMainTableView.reloadData()
                     }
                 }
-                alertController.addTextField {
-                    (textField: UITextField!) -> Void in
-                    textField.placeholder = str
-                }
+            }
+            alertController.addTextField {
+                (textField: UITextField!) -> Void in
+                textField.placeholder = str
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
 
-                alertController.addAction(cancelAction)
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
-                // your code here, get the row for the indexPath or do whatever you want
             }
     }
-        
+    
     let searchController = UISearchController(searchResultsController: nil)
     
 //    folderList = [FoldersModel(name: "AFolder"),FoldersModel(name: "BFolder")]

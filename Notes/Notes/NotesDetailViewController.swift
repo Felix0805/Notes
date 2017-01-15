@@ -28,11 +28,16 @@ class NotesDetailViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        titleTextField.text = titleString
-        contentTextView.text = contentString
+        if isAdd == 1 {
+            titleTextField.placeholder = "Title"
+            titleTextField.text = ""
+            contentTextView.text = ""
+        }
+        else {
+            titleTextField.text = showList[notesIndex].title
+            contentTextView.text = showList[notesIndex].content
+        }
         self.automaticallyAdjustsScrollViewInsets = false
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
